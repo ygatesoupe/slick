@@ -1277,8 +1277,7 @@
     Slick.prototype.initADA = function() {
         var _ = this;
         _.$slides.add(_.$slideTrack.find('.slick-cloned')).attr({
-            'aria-hidden': 'true',
-            'tabindex': '-1'
+            'aria-hidden': 'true'
         }).find('a, input, button, select').attr({
             'tabindex': '-1'
         });
@@ -2181,11 +2180,13 @@
         allSlides = _.$slider
             .find('.slick-slide')
             .removeClass('slick-active slick-center slick-current')
-            .attr('aria-hidden', 'true');
+            .attr('aria-hidden', 'true')
+            .attr('tabindex', -1);
 
         _.$slides
             .eq(index)
-            .addClass('slick-current');
+            .addClass('slick-current')
+            .attr('tabindex', 0);
 
         if (_.options.centerMode === true) {
 
