@@ -193,6 +193,7 @@
         }).find('a, input, button, select').attr({
             'tabindex': '0'
         });
+        _.$slideTrack.find('.slick-active').trigger('focus');
 
     };
 
@@ -1282,11 +1283,10 @@
             'tabindex': '-1'
         });
 
-        _.$slideTrack.attr('role', 'listbox');
 
         _.$slides.not(_.$slideTrack.find('.slick-cloned')).each(function(i) {
             $(this).attr({
-                'role': 'option',
+                'role': 'tabpanel',
                 'aria-describedby': 'slick-slide' + _.instanceUid + i + ''
             });
         });
