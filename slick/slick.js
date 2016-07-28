@@ -491,9 +491,9 @@
                 dot.append($('<li />').append(_.options.customPaging.call(this, _, i)));
             }
 
-            _.$dots = dot.appendTo(_.options.appendDots);
+            _.$dots = dot.prependTo(_.options.appendDots);
 
-            _.$dots.find('li').first().addClass('slick-active').attr('aria-hidden', 'false');
+            _.$dots.find('li').first().addClass('slick-active');
 
         }
 
@@ -1294,13 +1294,13 @@
         if (_.$dots !== null) {
             _.$dots.attr('role', 'tablist').find('li').each(function(i) {
                 $(this).attr({
-                    'role': 'presentation',
-                    'aria-selected': 'false',
-                    'aria-controls': 'navigation' + _.instanceUid + i + '',
+                    'role': 'presentation'
+                });
+                $(this).find('button').attr({
+                    'role': 'tab',
                     'id': 'slick-slide' + _.instanceUid + i + ''
                 });
             })
-                .first().attr('aria-selected', 'true').end()
                 .find('button').attr('role', 'button').end()
                 .closest('div').attr('role', 'toolbar');
         }
@@ -2840,14 +2840,12 @@
 
             _.$dots
                 .find('li')
-                .removeClass('slick-active')
-                .attr('aria-hidden', 'true');
+                .removeClass('slick-active');
 
             _.$dots
                 .find('li')
                 .eq(Math.floor(_.currentSlide / _.options.slidesToScroll))
-                .addClass('slick-active')
-                .attr('aria-hidden', 'false');
+                .addClass('slick-active');
 
         }
 
